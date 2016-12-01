@@ -14,6 +14,7 @@ import org.openqa.selenium.WebElement;
 public class WebDriverAction {
 	public Logger log = Logger.getLogger("Logger");
 	WebDriver driver = null;
+	private String propertiesFileUrl = "\\src\\gmailsite\\datafile\\config.properties";
 	
 	public WebDriverAction(WebDriver driver) {
 		//System.setProperty("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.Jdk14Logger");
@@ -84,7 +85,7 @@ public class WebDriverAction {
 	
 	public String getPropertiesFileValue (String key){
 		String value = "";
-		String propertiesFileDirectory = System.getProperty("user.dir") + "\\src\\gmailsite\\datafile\\config.properties";
+		String propertiesFileDirectory = System.getProperty("user.dir") + propertiesFileUrl;
 		
 		File file = new File(propertiesFileDirectory);
 		
@@ -103,8 +104,9 @@ public class WebDriverAction {
 			e.printStackTrace();
 		}
 		
+		value = prop.getProperty(key);
 		
-		return value = prop.getProperty(key);
+		return value;
 	}
 
 }
