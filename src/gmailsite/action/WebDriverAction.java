@@ -1,5 +1,11 @@
 package gmailsite.action;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -74,6 +80,31 @@ public class WebDriverAction {
 	public void open(String url){
 		log.debug("[info] Executing: | Open URL: " + url + " |");
 		driver.get(url);
+	}
+	
+	public String getPropertiesFileValue (String key){
+		String value = "";
+		String propertiesFileDirectory = System.getProperty("user.dir") + "\\src\\gmailsite\\datafile\\config.properties";
+		
+		File file = new File(propertiesFileDirectory);
+		
+		FileInputStream fileInput = null;
+		try{
+			fileInput = new FileInputStream(file);
+		} catch(FileNotFoundException e){
+			e.printStackTrace();
+		}
+		Properties prop = new Properties();
+		
+		//load properties file
+		try {
+			prop.load(fileInput);
+		} catch (IOException e){
+			e.printStackTrace();
+		}
+		
+		
+		return value = prop.getProperty(key);
 	}
 
 }
