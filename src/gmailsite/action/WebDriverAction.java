@@ -40,7 +40,7 @@ public class WebDriverAction {
 		return by;
 	}
 	
-	private WebElement getElement(String locator){
+	protected WebElement getElement(String locator){
 		return driver.findElement(defineElement(locator));
 	}
 	
@@ -53,12 +53,12 @@ public class WebDriverAction {
 		}
 	}
 	
-	public void sendKeys(String locator, String value){
+	public void enter(String locator, String value){
 		try{
-			log.debug("[info] Executing: | SendKeys | " + locator + " | " + value + " |");
+			log.debug("[info] Executing: | Enter | " + locator + " | " + value + " |");
 			getElement(locator).sendKeys(value);
 		} catch (Exception e){
-			log.debug("[info] Executing: | [>> ERROR <<] " + locator + " not found to sendKeys | " + e.getMessage());
+			log.debug("[info] Executing: | [>> ERROR <<] " + locator + " not found to enter | " + e.getMessage());
 		}
 	}
 	

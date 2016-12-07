@@ -7,7 +7,7 @@ import gmailsite.action.WebDriverAction;
 public class GeneralPage extends WebDriverAction{
 	protected WebDriver driver;
 	private String btnSignInElementXPath = "//a[contains(@class,'sign-in')]";
-	private String storefrontUrlvalue = "StorefrontUrl";
+	private String storefrontUrlvalue = "Url";
 	
 	public GeneralPage(WebDriver driver){
 		super(driver);
