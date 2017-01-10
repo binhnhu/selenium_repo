@@ -40,7 +40,7 @@ public class WebDriverAction {
 		return by;
 	}
 	
-	protected WebElement getElement(String locator){
+	public WebElement getElement(String locator){
 		return driver.findElement(defineElement(locator));
 	}
 	
@@ -81,6 +81,7 @@ public class WebDriverAction {
 	public void open(String url){
 		log.debug("[info] Executing: | Open URL: " + url + " |");
 		driver.get(url);
+		driver.manage().window().maximize();
 	}
 	
 	public String getPropertiesFileValue (String key){

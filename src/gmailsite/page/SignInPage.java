@@ -14,18 +14,18 @@ public class SignInPage extends GeneralPage{
 		super(driver);
 	}
 	
-	public void SignIn(String username, String password, String staySignedIn){
+	public InboxPage SignIn(String username, String password, String staySignedIn){
 		
 		enter(txtEmailLocator, username);
 		click(btnNextLocator);
-		enter(txtPasswordLocator, password);
+		enter(txtPasswordLocator, password);		
 		if(staySignedIn != null){
-			if((staySignedIn.toLowerCase() == "yes" && getElement(chkStaySignedInLocator).isSelected() == false) || (staySignedIn.toLowerCase() == "no" && getElement(chkStaySignedInLocator).isSelected() == true) ){
+			if((staySignedIn.toLowerCase().equals("yes") && getElement(chkStaySignedInLocator).isSelected() == false) || (staySignedIn.toLowerCase().equals("no") && getElement(chkStaySignedInLocator).isSelected() == true) ){
 				click(chkStaySignedInLocator);
 			}
 		}
 		click(btnSignInLocator);
-		
+		return new InboxPage(driver);
 		
 	}
 	
